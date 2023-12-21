@@ -2,6 +2,8 @@ const express = require("express");
 
 const route = express.Router();
 
+const validateToken = require("../middleware/tokenHandler");
+
 const {
   getCourse,
   postCourse,
@@ -12,12 +14,12 @@ const {
 
 route.get("/", getCourse);
 
-route.post("/", postCourse);
+route.post("/", validateToken, postCourse);
 
-route.get("/:id", getSpecificCourse);
+route.get("/:id", validateToken, getSpecificCourse);
 
-route.put("/:id", updateCourse);
+route.put("/:id", validateToken, updateCourse);
 
-route.delete("/:id", deleteCourse);
+route.delete("/:id", validateToken, deleteCourse);
 
 module.exports = route;

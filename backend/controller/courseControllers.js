@@ -1,22 +1,74 @@
-const getCourse = (req, res) => {
-  res.send("hey, here's your courses..");
+const Courses = require("../model/courseSchema");
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const getCourse = async (req, res) => {
+  const course = await Courses.find( );
+  res.send(course);
 };
 
-const postCourse = (req, res) => {
-    console.log(req.body)
-  res.send("“The course has been added successfully");
+const postCourse = async (req, res) => {
+  const { name, description, price, duration, level, topics, schedule } =
+    req.body;
+
+  //   if (!name || !email || !phone) {
+  //     throw new Error("do not leave it blank..");
+  //   }
+
+  const course = await Courses.create({
+    name,
+    description,
+    price,
+    duration,
+    level,
+    topics,
+    schedule,
+    user_id: req.user.id,
+  });
+
+  res.send(course);
 };
 
-const getSpecificCourse = (req, res) => {
-  res.send("here is your specific course..");
+const getSpecificCourse = async (req, res) => {
+  const course = await Courses.findById(req.params.id);
+  if (!course) {
+    res.status(404).send("'not  found..sorry..");
+    throw new Error("'not  found..sorry..");
+  }
+
+  res.send(course);
 };
 
-const updateCourse = (req, res) => {
-  res.send("“The course has been updated successfully");
+const updateCourse = async (req, res) => {
+  const course = await Courses.findById(req.params.id);
+  if (!course) {
+    res.status(404);
+    throw new Error("'not  found..sorry..");
+  }
+
+  const updatedCourse = await Courses.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  res.send(updatedCourse);
 };
 
-const deleteCourse = (req, res) => {
-  res.send("“The course has been deleted successfully");
+const deleteCourse = async (req, res) => {
+  const course = await Courses.findById(req.params.id);
+  if (!course) {
+    res.status(404);
+    throw new Error("'not  found..sorry..");
+  }
+
+  await Courses.deleteOne();
+  res.status(204).send(course);
 };
 
 module.exports = {
