@@ -17,15 +17,17 @@ http://localhost:8000/api/courses/id
 http://localhost:8000/api/user/register
 http://localhost:8000/api/user/login
 
-### this is for the  association..
+### this is for the association..
+
 ![images](/backend/screenshots/ref.png)
 
 ### Here we can see no validateToken for the getCourse.Because any client can see the details of courses..but after that we can see validToken for everything because only admin can create,update or delete any courses.
+
 ![images](/backend/screenshots/validation.png)
 
+### I have also used MVC pattern here.
 
-### I also have used MVC pattern here.
-### I also have use mongodb database.
+### I have also used mongodb database.
 
 ### Installation
 
@@ -49,9 +51,3 @@ http://localhost:8000/api/user/login
    ```
 
    ### Also create a .env file for secret.
-
-
-
-
-
-
