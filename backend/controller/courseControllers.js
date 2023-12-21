@@ -16,9 +16,6 @@ const postCourse = async (req, res) => {
   const { name, description, price, duration, level, topics, schedule } =
     req.body;
 
-  //   if (!name || !email || !phone) {
-  //     throw new Error("do not leave it blank..");
-  //   }
 
   const course = await Courses.create({
     name,

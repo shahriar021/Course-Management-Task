@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { use } = require("../routes/userRoutes");
 require("dotenv").config();
-// const { use } = require("../routes/userRoutes");
-console.log(process.env.NAMW);
+
+
 
 const userRegister = async (req, res) => {
   const { userName, email, password } = req.body;

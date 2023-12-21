@@ -1,4 +1,4 @@
-# here is the documentaion..
+# Here is the documentaion..
 
 ### Course Apis
 
@@ -11,6 +11,8 @@ http://localhost:8000/api/courses/
 http://localhost:8000/api/courses/id
 
 ### admin registration and login
+
+### Here,Admin can register and login to this for create,update and delete.
 
 http://localhost:8000/api/user/register
 http://localhost:8000/api/user/login
@@ -45,6 +47,10 @@ http://localhost:8000/api/user/login
 
    The development server will compile the code and open the application in your default web browser. You can access the application at http://localhost:3000.
    ```
+
+   ### Also create a .env file for secret.
+
+
 
 
 
